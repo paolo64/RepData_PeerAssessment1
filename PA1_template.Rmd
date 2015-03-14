@@ -7,15 +7,52 @@ output:
 
 
 ## Loading and preprocessing the data
-
+- Load data
+````{r echo=TRUE}
+unzip("activity.zip")
+#rawData <- read.csv("activity.csv", header = TRUE, sep = ",")
+rawData <- read.csv("activity.csv")
+````
+- Process/transform the data (if necessary) into a format suitable for your analysis
+```{r echo=TRUE}
+sumSteps <- aggregate(steps ~ date, data = rawData, sum, na.rm = TRUE)
+````
 
 
 ## What is mean total number of steps taken per day?
+- Make a histogram of the total number of steps taken each day
+```{r echo=TRUE}
+hist(sumSteps$steps,col="green",xlab="Number of steps per day",main="Histogram of number of steps per day")
+```
 
+- Calculate and report the mean and median of the total number of steps taken per day
 
+mean of total number of steps per day
+```{r echo=TRUE}
+# mean
+ms <- mean(sumSteps$steps)
+ms
+```
+
+median of total number of steps per day
+```{r echo=TRUE}
+# median
+median(sumSteps$steps)
+```
 
 ## What is the average daily activity pattern?
+- Make a time series plot (i.e. type = "l") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis)
 
+```{r echo=TRUE}
+stepInterv <- aggregate(steps ~ interval,data=rawData,mean,na.rm=TRUE)
+plot(steps ~ interval,data = stepInterv,type="l")
+```
+
+- Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?
+```{r echo=TRUE}
+maxInterval <- stepInterv[stepInterv$steps==max(stepInterv$steps),]
+maxInterval$interval
+```
 
 
 ## Imputing missing values
