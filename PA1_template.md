@@ -32,28 +32,30 @@ hist(sumSteps$steps,col="green",xlab="Number of steps per day",main="Histogram o
 
 - Calculate and report the mean and median of the total number of steps taken per day
 
-Mean of total number of steps per day
+
 
 ```r
 # mean
-mean(sumSteps$steps)
+m <- mean(sumSteps$steps)
+m
 ```
 
 ```
 ## [1] 10766.19
 ```
+Mean of total number of steps per day: **10766.19**
 
-Median of total number of steps per day
 
 ```r
 # median
-median(sumSteps$steps)
+med <- median(sumSteps$steps)
+med
 ```
 
 ```
 ## [1] 10765
 ```
-
+Median of total number of steps per day: **10765**
 
 ## What is the average daily activity pattern?
 - Make a time series plot (i.e. type = "l") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis)
@@ -76,7 +78,7 @@ maxInterval$interval
 ```
 ## [1] 835
 ```
-
+5-minute interval that contains the maximum number of steps: **835**
 
 ## Imputing missing values
 - Calculate and report the total number of missing values in the dataset
@@ -89,7 +91,7 @@ sumNA
 ```
 ## [1] 2304
 ```
-The total number of missing values in the dataset is **2304**
+Total number of missing values in the dataset: **2304**
 
 - Devise a strategy for filling in all of the missing values in the dataset. The strategy does not need to be sophisticated. For example, you could use the mean/median for that day, or the mean for that 5-minute interval, etc.
 
@@ -122,22 +124,26 @@ hist(sumSteps2$steps,col="red",xlab="Number of steps per day",main="Histogram of
 
 ```r
 # mean2
-mean(sumSteps2$steps)
+m2 <- mean(sumSteps2$steps)
+m2
 ```
 
 ```
 ## [1] 10766.19
 ```
+Mean total number of steps taken per day (with the missing data filled in): **10766.19**
 
 
 ```r
 # median2
-median(sumSteps2$steps)
+med2 <- median(sumSteps2$steps)
+med2
 ```
 
 ```
 ## [1] 10766.19
 ```
+Median total number of steps taken per day (with the missing data filled in): **10766.19**
 
 
 ```r

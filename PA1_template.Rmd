@@ -27,18 +27,20 @@ hist(sumSteps$steps,col="green",xlab="Number of steps per day",main="Histogram o
 
 - Calculate and report the mean and median of the total number of steps taken per day
 
-Mean of total number of steps per day
+
 ```{r echo=TRUE}
 # mean
-mean(sumSteps$steps)
+m <- mean(sumSteps$steps)
+m
 ```
+Mean of total number of steps per day: **`r format(round(m, 2), nsmall = 2)`**
 
-Median of total number of steps per day
 ```{r echo=TRUE}
 # median
-median(sumSteps$steps)
+med <- median(sumSteps$steps)
+med
 ```
-
+Median of total number of steps per day: **`r med`**
 
 ## What is the average daily activity pattern?
 - Make a time series plot (i.e. type = "l") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis)
@@ -53,7 +55,7 @@ plot(steps ~ interval,data = stepInterv,type="l",main = "Steps - Interval")
 maxInterval <- stepInterv[stepInterv$steps==max(stepInterv$steps),]
 maxInterval$interval
 ```
-
+5-minute interval that contains the maximum number of steps: **`r maxInterval$interval`**
 
 ## Imputing missing values
 - Calculate and report the total number of missing values in the dataset
@@ -61,7 +63,7 @@ maxInterval$interval
 sumNA <- sum(is.na(rawData$steps))
 sumNA
 ```
-The total number of missing values in the dataset is **`r sumNA`**
+Total number of missing values in the dataset: **`r sumNA`**
 
 - Devise a strategy for filling in all of the missing values in the dataset. The strategy does not need to be sophisticated. For example, you could use the mean/median for that day, or the mean for that 5-minute interval, etc.
 
@@ -89,13 +91,17 @@ hist(sumSteps2$steps,col="red",xlab="Number of steps per day",main="Histogram of
 
 ```{r echo=TRUE}
 # mean2
-mean(sumSteps2$steps)
+m2 <- mean(sumSteps2$steps)
+m2
 ```
+Mean total number of steps taken per day (with the missing data filled in): **`r format(round(m2, 2), nsmall = 2)`**
 
 ```{r echo=TRUE}
 # median2
-median(sumSteps2$steps)
+med2 <- median(sumSteps2$steps)
+med2
 ```
+Median total number of steps taken per day (with the missing data filled in): **`r format(round(med2, 2), nsmall = 2)`**
 
 ```{r echo=TRUE}
 stepInterv2 <- aggregate(steps ~ interval,data=rawData2,mean)
